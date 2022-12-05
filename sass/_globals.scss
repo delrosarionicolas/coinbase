@@ -1,0 +1,316 @@
+@use "_components";
+@import "../node_modules/rfs/scss.scss";
+
+@mixin font($font-size, $font-weight, $color, $line-height: "") {
+  color: $color;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+}
+
+@mixin section-display($padding: 0) {
+  margin: 0 auto;
+  padding: $padding;
+  width: 100%;
+}
+
+html {
+  min-width: 100vw;
+}
+
+.container {
+  max-width: 1142px;
+  overflow: hidden;
+}
+
+.nav {
+  background: components.$white;
+  border-bottom: 1px solid rgb(236, 239, 241);
+  height: 57px;
+}
+
+.logo img {
+  max-height: 2rem;
+}
+
+#home {
+  @include section-display(100px 20px 80px);
+
+  .home-cta {
+    align-self: flex-start;
+    flex: 1;
+    z-index: 1;
+
+    .cta-text {
+      color: components.$primary-color-hover;
+      font-weight: bold;
+
+      a {
+        @include font(1.4rem, 500, inherit, 18.4px);
+        font-size: 16px;
+        margin: 8px;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      i:last-child {
+        font-size: 16px;
+      }
+    }
+
+    .home-title {
+      @include font(3.4rem, 500, components.$black, 40px);
+      margin: 8px 0 16px;
+    }
+    @media (min-width: 564px) {
+      .home-title {
+        @include font(6.2rem, 500, components.$black, 71.3px);
+      }
+    }
+
+    .home-description {
+      @include font(1.6rem, 400, components.$black, 24px);
+      margin-bottom: 32px;
+    }
+    @media (min-width: 564px) {
+      .home-description {
+        @include font(2rem, 500, components.$black, 28px);
+      }
+    }
+
+    .lead-magnet {
+      .fp-btn {
+        width: 167px;
+        margin-bottom: 10px;
+
+        .p-btn {
+          @include font(1.4rem, 700, components.$white, 1.9);
+          padding: 20px;
+          width: 100%;
+        }
+      }
+
+      input {
+        @include font(1.8rem, 400, components.$black, 22px);
+        border-radius: 4px;
+        border: 1px solid #eceff1;
+        padding: 20px;
+        &:hover {
+          border: 1px solid components.$primary-color;
+        }
+      }
+    }
+
+    .lead-magnet div:first-child {
+        margin-bottom: 10px;
+    } 
+  }
+
+  .home-img {
+    flex: 0.75;
+  }
+}
+
+#features {
+  @include section-display(100px 10px 100px 10px);
+
+  .intro {
+    text-align: center;
+
+    h2 {
+      @include font(4rem, 500, components.$black, 46px);
+    }
+
+    p {
+      @include font(1.8rem, 400, components.$black, 19px);
+      color: components.$secondary-color;
+      margin: 18px 0 64px;
+    }
+  }
+
+  .features {
+    .col-sm-6 {
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+
+      .feature {
+        display: flex;
+        margin-top: 32px;
+
+        .icon {
+          margin-right: 32px;
+        }
+        .description {
+            padding: 5px 10px;
+        }
+      }
+    }
+  }
+
+  .description {
+    .title {
+      @include font(2rem, 500, components.$black, 23px);
+    }
+
+    .text {
+      @include font(1.6rem, 400, components.$secondary-color, 26px);
+    }
+  }
+}
+
+#benefits {
+  @extend #features, .description;
+  @include section-display(100px 10px 100px 10px);
+  border-top: 1px solid #eceff1;
+  text-align: center;
+
+  .intro {
+    @extend .intro;
+  }
+
+  .benefit-cards {
+    margin: 0 auto;
+
+    .benefit {
+      margin: 0 auto;
+      padding: 20px;
+
+      .icon {
+        margin: 0 auto;
+        box-shadow: none;
+
+        i {
+          font-size: 6.4rem;
+        }
+      }
+
+      .description {
+        .title {
+          margin-top: 32px;
+        }
+
+        .text {
+          padding: 16px 10px 24px 10px;
+        }
+
+        .cta {
+          @include font(1.4rem, 500, components.$primary-color, 28px);
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+#kpis {
+  @include section-display();
+  background: components.$primary-color;
+  padding: 55px 40px;
+
+  .container {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+
+    .kpi {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      margin: 0 auto;
+      padding: 20px 0;
+
+      .number {
+        @include font(5.6rem, 500, components.$white, 48px);
+        text-align: center;
+        margin-bottom: 16px;
+      }
+
+      .description {
+        @include font(1.8rem, 400, components.$white, 19px);
+        opacity: 0.7;
+      }
+    }
+  }
+}
+
+#onboarding {
+  @include section-display(100px 10px 100px 10px);
+  @extend #features;
+
+  .intro {
+    @extend #features, .intro;
+    @include section-display(0);
+
+    p:last-child {
+      margin: 20px 0 0;
+    }
+  }
+
+  .steps {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+
+    .icon-desc {
+      max-width: none;
+      padding: 20px 0;
+    }
+
+    .icon {
+      margin: 0 auto;
+      box-shadow: none;
+
+      i {
+        font-size: 6.4rem;
+      }
+    }
+
+    .step-separator {
+      flex: 1;
+      border-top: 1px solid #ddd;
+      margin-top: -40px;
+    }
+  }
+}
+
+#footer-cta {
+  @include section-display(50px 10px);
+  background-color: #113355;
+  position: relative;
+
+  .footer-cta-content {
+    h2 {
+      @include font(2.8rem, 500, components.$white, 36.4px);
+    }
+
+    p {
+      @include font(1.6rem, 400, components.$white, 25.6px);
+    }
+  }
+}
+
+@media (min-width: 827px) {
+  #footer-cta {
+    @include section-display(180px 10px);
+    background-color: components.$footer-cta;
+    background-image: url("https://assets.coinbase.com/assets/earn-upsell-desktop.7ac67bac6fdea56ce4ca11961fc8f95d.jpg");
+    background-position: 100%;
+    background-repeat: no-repeat;
+  }
+
+  .footer-cta-content {
+    h2 {
+      @include font(3.2rem, 500, components.$black, 42px);
+    }
+
+    p {
+      @include font(1.4rem, 400, components.$black, 23px);
+    }
+  }
+}
